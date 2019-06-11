@@ -1,11 +1,10 @@
-resource "random_id" "random" {
-  keepers {
-    uuid = "${uuid()}"
-  }
-
-  byte_length = 16
+provider "aws" {
+  access_key = ""
+  secret_key = ""
+  region     = "us-east-1"
 }
 
-output "random" {
-  value = "${random_id.random.hex}"
+resource "aws_instance" "example" {
+  ami           = "ami-b374d5a5"
+  instance_type = "t2.micro"
 }
